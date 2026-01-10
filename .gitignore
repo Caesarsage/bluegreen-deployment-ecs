@@ -1,0 +1,75 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.pdb
+*.egg-info/
+*.egg
+*.env
+.env*
+.venv/
+venv/
+
+# VSCode
+.vscode/
+
+# macOS
+.DS_Store
+
+# Docker
+*.log
+docker-compose.override.yml
+
+# Database
+*.sqlite3
+*.db
+
+# Node
+node_modules/
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+**.tfvars
+**/**.tfvars
+
+# Test & coverage
+htmlcov/
+.coverage
+.tox/
+.pytest_cache/
+
+# Misc
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# Ignore build artifacts
+build/
+dist/
+*.egg-info/
+
+# Ignore results
+results.sarif
+
+# Ignore IDE files
+.idea/
+
+# Ignore test results
+/test-results/
+
+# Ignore compiled Go binaries
+*.out
+*.exe
+*.test
+
+# Ignore Go modules cache
+/go.sum
+
+# Ignore local notes
+note.md
