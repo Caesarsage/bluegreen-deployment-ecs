@@ -17,7 +17,7 @@ setup:
 	chmod +x scripts/*.sh
 
 start:
-	docker-compose -f docker/docker-compose.yml up -d
+	docker-compose -f docker/docker-compose.yml up -d --build
 	@echo "\n✅ Services started!"
 	@echo "Blue environment: http://localhost:8080"
 	@echo "Green environment: http://localhost:8081"
