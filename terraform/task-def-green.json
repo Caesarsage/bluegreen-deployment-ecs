@@ -1,0 +1,51 @@
+{
+  "family": "ecommerce-bluegreen",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "256",
+  "memory": "512",
+  "executionRoleArn": "arn:aws:iam::280653825130:role/ecommerce-bluegreen-ecs-task-execution-role",
+  "taskRoleArn": "arn:aws:iam::280653825130:role/ecommerce-bluegreen-ecs-task-role",
+  "containerDefinitions": [{
+    "name": "app",
+    "image": "280653825130.dkr.ecr.us-east-1.amazonaws.com/ecommerce-bluegreen:v2.0.1",
+    "essential": true,
+    "portMappings": [{
+      "containerPort": 8080,
+      "protocol": "tcp"
+    }],
+    "environment": [
+      {"name": "APP_VERSION", "value": "green"},
+      {"name": "ENVIRONMENT", "value": "production"},
+      {"name": "AWS_REGION", "value": "us-east-1"},
+      {"name": "DB_HOST", "value": "ecommerce-bluegreen-db.c0vq8u22kse2.us-east-1.rds.amazonaws.com"},
+      {"name": "DB_PORT", "value": "5432"},
+      {"name": "DB_NAME", "value": "ecommerce"}
+    ],
+    "secrets": [
+      {
+        "name": "DB_USER",
+        "valueFrom": "arn:aws:secretsmanager:us-east-1:280653825130:secret:ecommerce-bluegreen-db-credentials-v2-CEwCn8:username::"
+      },
+      {
+        "name": "DB_PASSWORD",
+        "valueFrom": "arn:aws:secretsmanager:us-east-1:280653825130:secret:ecommerce-bluegreen-db-credentials-v2-CEwCn8:password::"
+      }
+    ],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "/ecs/ecommerce-bluegreen",
+        "awslogs-region": "us-east-1",
+        "awslogs-stream-prefix": "ecs"
+      }
+    },
+    "healthCheck": {
+      "command": ["CMD-SHELL", "curl -f http://localhost:8080/health || exit 1"],
+      "interval": 30,
+      "timeout": 5,
+      "retries": 3,
+      "startPeriod": 60
+    }
+  }]
+}

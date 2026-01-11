@@ -1,0 +1,126 @@
+{
+    "SecurityGroups": [
+        {
+            "GroupId": "sg-09f35b5573b382847",
+            "IpPermissionsEgress": [
+                {
+                    "IpProtocol": "-1",
+                    "UserIdGroupPairs": [],
+                    "IpRanges": [
+                        {
+                            "Description": "All outbound traffic",
+                            "CidrIp": "0.0.0.0/0"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                }
+            ],
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "ecommerce-bluegreen-rds-sg"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "production"
+                },
+                {
+                    "Key": "Project",
+                    "Value": "ecommerce-bluegreen"
+                },
+                {
+                    "Key": "ManagedBy",
+                    "Value": "Terraform"
+                }
+            ],
+            "VpcId": "vpc-064919653b82e155d",
+            "SecurityGroupArn": "arn:aws:ec2:us-east-1:280653825130:security-group/sg-09f35b5573b382847",
+            "OwnerId": "280653825130",
+            "GroupName": "ecommerce-bluegreen-rds-sg",
+            "Description": "Security group for RDS database",
+            "IpPermissions": [
+                {
+                    "IpProtocol": "tcp",
+                    "FromPort": 5432,
+                    "ToPort": 5432,
+                    "UserIdGroupPairs": [
+                        {
+                            "Description": "PostgreSQL from ECS tasks",
+                            "UserId": "280653825130",
+                            "GroupId": "sg-01b80b9e87e41e22b"
+                        }
+                    ],
+                    "IpRanges": [],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                }
+            ]
+        }
+    ]
+}
+{
+    "SecurityGroups": [
+        {
+            "GroupId": "sg-09f35b5573b382847",
+            "IpPermissionsEgress": [
+                {
+                    "IpProtocol": "-1",
+                    "UserIdGroupPairs": [],
+                    "IpRanges": [
+                        {
+                            "Description": "All outbound traffic",
+                            "CidrIp": "0.0.0.0/0"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                }
+            ],
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "ecommerce-bluegreen-rds-sg"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "production"
+                },
+                {
+                    "Key": "Project",
+                    "Value": "ecommerce-bluegreen"
+                },
+                {
+                    "Key": "ManagedBy",
+                    "Value": "Terraform"
+                }
+            ],
+            "VpcId": "vpc-064919653b82e155d",
+            "SecurityGroupArn": "arn:aws:ec2:us-east-1:280653825130:security-group/sg-09f35b5573b382847",
+            "OwnerId": "280653825130",
+            "GroupName": "ecommerce-bluegreen-rds-sg",
+            "Description": "Security group for RDS database",
+            "IpPermissions": [
+                {
+                    "IpProtocol": "tcp",
+                    "FromPort": 5432,
+                    "ToPort": 5432,
+                    "UserIdGroupPairs": [
+                        {
+                            "Description": "PostgreSQL from ECS tasks",
+                            "UserId": "280653825130",
+                            "GroupId": "sg-01b80b9e87e41e22b"
+                        }
+                    ],
+                    "IpRanges": [
+                        {
+                            "CidrIp": "102.220.173.106/32"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                }
+            ]
+        }
+    ]
+}
