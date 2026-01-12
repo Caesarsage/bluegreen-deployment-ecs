@@ -74,13 +74,3 @@ resource "aws_instance" "bastion" {
     Name = "${var.project_name}-bastion"
   }
 }
-
-output "bastion_public_ip" {
-  description = "Public IP of bastion host"
-  value       = aws_instance.bastion.public_ip
-}
-
-output "bastion_ssh_command" {
-  description = "SSH command to connect to bastion"
-  value       = "ssh -i ~/.ssh/id_rsa ec2-user@${aws_instance.bastion.public_ip}"
-}

@@ -47,7 +47,7 @@ resource "aws_db_instance" "main" {
   parameter_group_name   = aws_db_parameter_group.main.name
   vpc_security_group_ids = [aws_security_group.rds.id]
 
-  publicly_accessible = true # Set to false in production!
+  publicly_accessible = false 
   skip_final_snapshot = true # Set to false in production!
 
   backup_retention_period = 7

@@ -187,14 +187,20 @@ echo "Database Endpoint: $DB_ENDPOINT"
 Connect to the database through a bastion or by temporarily allowing your IP:
 
 ### Option A: Using EC2 Bastion (Recommended for Production)
+This is what we are using in this guide
+
 
 ```bash
-# Launch a temporary EC2 instance in the same VPC
+# Copy the migration files to the bastion host from your local machine
+
+scp -i ~/.ssh/id_rsa docker/init.sql ec2-user@$BASTION_IP:/tmp/
+scp -i ~/.ssh/id_rsa migrations/*.sql ec2-user@$BASTION_IP:/tmp/
+
 # Then SSH into it and run migrations
-ssh -i your-key.pem ec2-user@bastion-ip
+ssh -i your-key.pem ec2-user@$BASTION_IP
 
 # Inside the bastion:
-psql -h $DB_ENDPOINT -U dbadmin -d ecommerce -f /path/to/init.sql
+psql -h $DB_ENDPOINT -U dbadmin -d ecommerce -f /tmp/init.sql
 ```
 
 ### Option B: Direct Connection (For Testing - Not Production!)
@@ -604,7 +610,7 @@ aws rds wait db-snapshot-completed \
     --db-snapshot-identifier pre-contract-$(date +%Y%m%d-%H%M%S)
 
 # Run contract migration
-psql -h $DB_ENDPOINT -U dbadmin -d ecommerce -f migrations/002_contract_address.sql
+psql -h $DB_ENDPOINT -U dbadmin -d ecommerce -f /tmp/002_contract_address.sql
 
 # Verify old column is gone
 psql -h $DB_ENDPOINT -U dbadmin -d ecommerce -c "\d customers"
