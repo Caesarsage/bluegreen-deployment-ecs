@@ -3,6 +3,12 @@
 
 Production-ready example of blue-green deployment handling database migrations using the expand-contract pattern.
 
+## Article Link
+I have also written a more detailed article about this project on freecodecamp. Click the link below to read more:
+
+[How to manage blue green deployment on aws ecs with database migrations](https://www.freecodecamp.org/news/how-to-manage-blue-green-deployments-on-aws-ecs-with-database-migrations/
+)
+
 ## Quick Start (Local Testing)
 
 ### 1. Prerequisites
